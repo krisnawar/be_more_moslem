@@ -29,15 +29,15 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+id:
+  hello: "Halo dunia"
   site_title: "Be More Moslem Bruh!"
   navbar:
-    home: "Home"
-    contact_me: "Contact Me"
+    home: "Beranda"
+    contact_me: "Hubungi Saya"
   footer:
-    author: "By Krisna.WAR"
+    author: "Oleh Krisna.WAR"
   home:
-    please_choose_city: "Please Choose City"
+    please_choose_city: "Silakan Pilih Kota"
   miscellaneous:
-    submit: "Submit"
+    submit: "Kirim"
