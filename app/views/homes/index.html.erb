@@ -1,0 +1,22 @@
+<div class="d-flex flex-column min-vh-100">
+  <%= render "layouts/navbar" %>
+  <div class="container">
+    <div class="d-flex justify-content-end mt-3">
+      <form class="d-flex" role="search" action="<%= homes_path %>">
+        <select name="city" id="city" class="form-select form-select-sm me-2 my-auto" aria-label=".form-select-sm example">
+          <% if @selected_city.present? %>
+            <option value="<%= @selected_city %>" selected><%= @selected_city.titleize %></option>
+          <% else %>
+            <option selected disabled><%= I18n.t('home.please_choose_city') %></option>
+          <% end %>
+          <% @city_name.each do |city| %>
+            <option value="<%= city %>"><%= city.titleize %></option>
+          <% end %>
+        </select>
+        <input type="date" class="form-control form-control-sm me-2 my-auto" id="date" name ="date">
+        <button class="btn btn-outline-success" type="submit"><%= I18n.t('miscellaneous.submit') %></button>
+      </form>
+    </div>
+  </div>
+  <%= render "layouts/footer" %>
+</div>
