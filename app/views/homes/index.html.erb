@@ -1,22 +1,149 @@
 <div class="d-flex flex-column min-vh-100">
   <%= render "layouts/navbar" %>
-  <div class="container">
+  <div class="container mb-5">
     <div class="d-flex justify-content-end mt-3">
       <form class="d-flex" role="search" action="<%= homes_path %>">
-        <select name="city" id="city" class="form-select form-select-sm me-2 my-auto" aria-label=".form-select-sm example">
+        <select name="city" id="city" class="form-select form-select-sm me-2 my-auto" aria-label=".form-select-sm example" required>
           <% if @selected_city.present? %>
             <option value="<%= @selected_city %>" selected><%= @selected_city.titleize %></option>
           <% else %>
-            <option selected disabled><%= I18n.t('home.please_choose_city') %></option>
+            <option selected disabled hidden><%= I18n.t('home.please_choose_city') %></option>
           <% end %>
           <% @city_name.each do |city| %>
             <option value="<%= city %>"><%= city.titleize %></option>
           <% end %>
         </select>
-        <input type="date" class="form-control form-control-sm me-2 my-auto" id="date" name ="date">
+        <input type="date" class="form-control form-control-sm me-2 my-auto" id="date" name ="date" value="<%= @selected_date %>" required>
         <button class="btn btn-outline-success" type="submit"><%= I18n.t('miscellaneous.submit') %></button>
       </form>
     </div>
+    <% unless @prayer_time.present? %>
+      <div class="div text-center mt-4">
+        <h4><%= I18n.t('home.no_data') %></h4>
+      </div>
+    <% else %>
+      <div class="div text-center mt-4">
+        <h4><%= I18n.t('home.header_1', attribute: @selected_city.titleize) %></h4>
+        <h4><%= I18n.t('home.header_2', attribute: l(Date.parse(@selected_date), format: '%d %B %Y')) %></h4>
+      </div>
+      <div class="d-flex justify-content-center mt-4">
+        <% selected_date_prayer_time = @prayer_time.reject { |list| list.keys.first != @selected_date }.first.values.first %>
+        <div class="w-75 table-responsive-sm">
+          <table class="table table-borderless text-center">
+            <thead>
+              <tr>
+                <th><%= I18n.t('home.imsyak') %></th>
+                <th><%= I18n.t('home.shubuh') %></th>
+                <th><%= I18n.t('home.sunrise') %></th>
+                <th><%= I18n.t('home.dhuha') %></th>
+                <th><%= I18n.t('home.dzuhur') %></th>
+                <th><%= I18n.t('home.ashr') %></th>
+                <th><%= I18n.t('home.maghrib') %></th>
+                <th><%= I18n.t('home.isya') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= selected_date_prayer_time["imsyak"] %></td>
+                <td><%= selected_date_prayer_time["shubuh"] %></td>
+                <td><%= selected_date_prayer_time["terbit"] %></td>
+                <td><%= selected_date_prayer_time["dhuha"] %></td>
+                <td><%= selected_date_prayer_time["dzuhur"] %></td>
+                <td><%= selected_date_prayer_time["ashr"] %></td>
+                <td><%= selected_date_prayer_time["magrib"] %></td>
+                <td><%= selected_date_prayer_time["isya"] %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <h4><%= I18n.t('home.header_3', attribute: l(Date.parse(@selected_date), format: '%B %Y')) %></h4>
+      </div>
+      <div class="d-flex justify-content-center mt-4">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover text-center">
+            <thead>
+              <tr>
+                <th><%= I18n.t('home.date') %></th>
+                <th><%= I18n.t('home.imsyak') %></th>
+                <th><%= I18n.t('home.shubuh') %></th>
+                <th><%= I18n.t('home.sunrise') %></th>
+                <th><%= I18n.t('home.dhuha') %></th>
+                <th><%= I18n.t('home.dzuhur') %></th>
+                <th><%= I18n.t('home.ashr') %></th>
+                <th><%= I18n.t('home.maghrib') %></th>
+                <th><%= I18n.t('home.isya') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @prayer_time.each do |pray| %>
+                <tr>
+                  <td><%= l(Date.parse(pray.keys.first), format: '%d %b') %></td>
+                  <td><%= pray.values.first["imsyak"] %></td>
+                  <td><%= pray.values.first["shubuh"] %></td>
+                  <td><%= pray.values.first["terbit"] %></td>
+                  <td><%= pray.values.first["dhuha"] %></td>
+                  <td><%= pray.values.first["dzuhur"] %></td>
+                  <td><%= pray.values.first["ashr"] %></td>
+                  <td><%= pray.values.first["magrib"] %></td>
+                  <td><%= pray.values.first["isya"] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th><%= I18n.t('home.date') %></th>
+                <th><%= I18n.t('home.imsyak') %></th>
+                <th><%= I18n.t('home.shubuh') %></th>
+                <th><%= I18n.t('home.sunrise') %></th>
+                <th><%= I18n.t('home.dhuha') %></th>
+                <th><%= I18n.t('home.dzuhur') %></th>
+                <th><%= I18n.t('home.ashr') %></th>
+                <th><%= I18n.t('home.maghrib') %></th>
+                <th><%= I18n.t('home.isya') %></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <hr>
+      <div class="text-center mt-4">
+        <h4><%= I18n.t('home.random_ayah') %></h4>
+        <div>
+          <h6><%= "#{@surah[params[:locale]]["long"]} (#{@surah["translation"][params[:locale]]}) #{I18n.t('home.ayah')} #{@ayah["number"]["insurah"]}" %></h6>
+          <div class="box text-center">
+            <div class="arab text-center">
+              <%= @ayah["text"]["ar"] %>
+            </div>
+            <p class="text-muted mt-2"><%= "\"#{@ayah["text"]["read"]}\"" %></p>
+            <p><%= "\"#{@ayah["translation"][params[:locale]]}\"" %></p>
+          </div>
+          <div>
+            <audio src="<%= audio_path @ayah["audio"]["url"] %>" type="audio/mpeg" controls>
+              <%= I18n.t('home.errors.audio_element') %>
+            </audio>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="text-center mt-4">
+        <h4><%= I18n.t('home.random_dua') %></h4>
+        <p class="text-muted"><%= I18n.t('home.errors.not_available_en') %></p>
+        <div>
+          <h6><%= "#{@dua["doa"]}" %></h6>
+          <div class="box text-center">
+            <div class="arab text-center">
+              <%= @dua["ayat"] %>
+            </div>
+            <p class="text-muted mt-2"><%= @dua["latin"].capitalize %></p>
+            <p><%= @dua["artinya"] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="mb-5">
   </div>
   <%= render "layouts/footer" %>
 </div>
