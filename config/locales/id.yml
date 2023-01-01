@@ -35,9 +35,31 @@ id:
   navbar:
     home: "Beranda"
     contact_me: "Hubungi Saya"
+    language: "Bahasa"
+    id: "Bahasa Indonesia"
+    en: "Bahasa Inggris"
   footer:
-    author: "Oleh Krisna.WAR"
+    author: "Dikembangkan oleh Krisna.WAR"
   home:
     please_choose_city: "Silakan Pilih Kota"
+    header_1: "Jadwal Sholat di Kabupaten/Kota %{attribute}"
+    header_2: "Tanggal %{attribute}, dalam WIB"
+    header_3: "Jadwal Sholat Selama Bulan %{attribute}, dalam WIB"
+    date: "Tanggal"
+    imsyak: "Imsyak"
+    shubuh: "Shubuh"
+    sunrise: "Terbit"
+    dhuha: "Dhuha"
+    dzuhur: "Dzuhur"
+    ashr: "Ashr"
+    maghrib: "Maghrib"
+    isya: "Isya"
+    no_data: "Maaf Jadwal Sholat Belum Tersedia"
+    random_ayah: "Ayat Pilihan:"
+    ayah: "ayat"
+    random_dua: "Doa Pilihan:"
+    errors:
+      audio_element: "Browser anda tidak mendukung pemutaran audio."
+      not_available_en: "Tidak tersedia dalam bahasa Inggris"
   miscellaneous:
     submit: "Kirim"

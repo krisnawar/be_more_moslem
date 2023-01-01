@@ -35,9 +35,31 @@ en:
   navbar:
     home: "Home"
     contact_me: "Contact Me"
+    language: "Language"
+    id: "Bahasa Indonesia"
+    en: "English"
   footer:
-    author: "By Krisna.WAR"
+    author: "Developed by Krisna.WAR"
   home:
     please_choose_city: "Please Choose City"
+    header_1: "Prayer Time in %{attribute}"
+    header_2: "As per %{attribute}, as in Indonesian Western Time"
+    header_3: "Prayer Time As per %{attribute}, as in Indonesian Western Time"
+    date: "Date"
+    imsyak: "Imsyak"
+    shubuh: "Shubuh"
+    sunrise: "Sunrise"
+    dhuha: "Dhuha"
+    dzuhur: "Dzuhur"
+    ashr: "Ashr"
+    maghrib: "Maghrib"
+    isya: "Isya"
+    no_data: "Sorry, Prayer Time isn't Available Yet"
+    random_ayah: "Chosen Ayah:"
+    ayah: "ayah"
+    random_dua: "Chosen Dua:"
+    errors:
+      audio_element: "Your browser does not support the audio element."
+      not_available_en: "Not available in english"
   miscellaneous:
     submit: "Submit"
