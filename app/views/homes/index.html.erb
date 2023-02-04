@@ -107,41 +107,41 @@
           </table>
         </div>
       </div>
-      <hr>
-      <div class="text-center mt-4">
-        <h4><%= I18n.t('home.random_ayah') %></h4>
-        <div>
-          <h6><%= "#{@surah[params[:locale]]["long"]} (#{@surah["translation"][params[:locale]]}) #{I18n.t('home.ayah')} #{@ayah["number"]["insurah"]}" %></h6>
-          <div class="box text-center">
-            <div class="arab text-center">
-              <%= @ayah["text"]["ar"] %>
-            </div>
-            <p class="text-muted mt-2"><%= "\"#{@ayah["text"]["read"]}\"" %></p>
-            <p><%= "\"#{@ayah["translation"][params[:locale]]}\"" %></p>
-          </div>
-          <div>
-            <audio src="<%= audio_path @ayah["audio"]["url"] %>" type="audio/mpeg" controls>
-              <%= I18n.t('home.errors.audio_element') %>
-            </audio>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="text-center mt-4">
-        <h4><%= I18n.t('home.random_dua') %></h4>
-        <p class="text-muted"><%= I18n.t('home.errors.not_available_en') %></p>
-        <div>
-          <h6><%= "#{@dua["doa"]}" %></h6>
-          <div class="box text-center">
-            <div class="arab text-center">
-              <%= @dua["ayat"] %>
-            </div>
-            <p class="text-muted mt-2"><%= @dua["latin"].capitalize %></p>
-            <p><%= @dua["artinya"] %></p>
-          </div>
-        </div>
-      </div>
     <% end %>
+    <hr>
+    <div class="text-center mt-4">
+      <h4><%= I18n.t('home.random_ayah') %></h4>
+      <div>
+        <h6><%= "#{@surah[params[:locale]]["long"]} (#{@surah["translation"][params[:locale]]}) #{I18n.t('home.ayah')} #{@ayah["number"]["insurah"]}" %></h6>
+        <div class="box text-center">
+          <div class="arab text-center">
+            <%= @ayah["text"]["ar"] %>
+          </div>
+          <p class="text-muted mt-2"><%= "\"#{@ayah["text"]["read"]}\"" %></p>
+          <p><%= "\"#{@ayah["translation"][params[:locale]]}\"" %></p>
+        </div>
+        <div>
+          <audio src="<%= audio_path @ayah["audio"]["url"] %>" type="audio/mpeg" controls>
+            <%= I18n.t('home.errors.audio_element') %>
+          </audio>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="text-center mt-4">
+      <h4><%= I18n.t('home.random_dua') %></h4>
+      <p class="text-muted"><%= I18n.t('home.errors.not_available_en') %></p>
+      <div>
+        <h6><%= "#{@dua["doa"]}" %></h6>
+        <div class="box text-center">
+          <div class="arab text-center">
+            <%= @dua["ayat"] %>
+          </div>
+          <p class="text-muted mt-2"><%= @dua["latin"].capitalize %></p>
+          <p><%= @dua["artinya"] %></p>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="mb-5">
   </div>
